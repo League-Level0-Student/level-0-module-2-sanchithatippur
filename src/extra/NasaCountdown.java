@@ -19,8 +19,8 @@ public class NasaCountdown {
 		// 3. Change the countdown to use the new starting point
 		
 		// 1. Print a countdown from 10 to 0 on the console
-
-		// 4. Use the speak method to hear the countdown.
+syso
+// 4. Use the speak method to hear the countdown.
 		
 		// 5. when the counting is done, speak "blastoff!"
 	}
