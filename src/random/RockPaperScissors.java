@@ -6,6 +6,7 @@ package random;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -15,8 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class RockPaperScissors extends JPanel implements ActionListener{
-  
+public class RockPaperScissors extends JPanel implements ActionListener {
+
 	private JFrame window = new JFrame("Rock Paper Scissors");
 	private JButton rockButton = new JButton();
 	private JButton paperButton = new JButton();
@@ -29,15 +30,15 @@ public class RockPaperScissors extends JPanel implements ActionListener{
 	private Icon scissorsImage;
 
 	private Dimension buttonDim = new Dimension(300, 200);
-    
-    public void run(){
+
+	public void run() {
 
 		try {
 
 			// 1. Find 3 pictures (a rock, paper, and scissors) on the Internet.
 			// Drop the pictures into this package
 			// Replace the names below with your images
-		
+
 			rockImage = new ImageIcon(getClass().getResource("rock.png"));
 			paperImage = new ImageIcon(getClass().getResource("paper.jpeg"));
 			scissorsImage = new ImageIcon(getClass().getResource("scissors.jpeg"));
@@ -45,44 +46,47 @@ public class RockPaperScissors extends JPanel implements ActionListener{
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, "Cannot find one or more of your images");
 		}
-        
+
 		rockButton.setIcon(rockImage);
 		paperButton.setIcon(paperImage);
 		scissorsButton.setIcon(scissorsImage);
-        
-        rockButton.addActionListener(this);
-        paperButton.addActionListener(this);
-        scissorsButton.addActionListener(this);
-        
-        rockButton.setPreferredSize(buttonDim);
-        paperButton.setPreferredSize(buttonDim);
-        scissorsButton.setPreferredSize(buttonDim);
-        
-        instructionLabel.setText("Choose Your Weapon!");
-        
-        add(instructionLabel);
-        add(rockButton);
-        add(paperButton);
-        add(scissorsButton);
-        
-        window.add(this);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
-        window.pack();
-    }
-    
-    public static void main(String[] args) {
-        new RockPaperScissors().run();
-    }
 
-    @Override
+		rockButton.addActionListener(this);
+		paperButton.addActionListener(this);
+		scissorsButton.addActionListener(this);
+
+		rockButton.setPreferredSize(buttonDim);
+		paperButton.setPreferredSize(buttonDim);
+		scissorsButton.setPreferredSize(buttonDim);
+
+		instructionLabel.setText("Choose Your Weapon!");
+
+		add(instructionLabel);
+		add(rockButton);
+		add(paperButton);
+		add(scissorsButton);
+
+		window.add(this);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setVisible(true);
+		window.pack();
+	}
+
+	public static void main(String[] args) {
+		new RockPaperScissors().run();
+	}
+
+	@Override
     public void actionPerformed(ActionEvent e) {
         
         //2. Run the program 4 times. Does the computer always choose the same thing?
 
         //3. Change oppenentSelection to be a random number between 0 and 2;
-        int opponentSelection = 0;
-        
+		  Random gen=new Random ();
+		   int num= gen.nextInt(3);
+		int opponentSelection=gen.nextInt(3);
+		
+    
         //4. Run the program again. Is the result different?
  
         int selection = 0;
@@ -106,16 +110,15 @@ public class RockPaperScissors extends JPanel implements ActionListener{
             JOptionPane.showMessageDialog(null, "You Lose!");
         }
     }
-    
-    private String convertSelection(int s){
-       if (s==0)
-            return "ROCK";
-       else if (s==1)
-            return "PAPER";
-       else if (s==2)
-            return "SCISSORS";
-       else
-            return "";
-        }
-    }
-    
+
+	private String convertSelection(int s) {
+		if (s == 0)
+			return "ROCK";
+		else if (s == 1)
+			return "PAPER";
+		else if (s == 2)
+			return "SCISSORS";
+		else
+			return "";
+	}
+}
